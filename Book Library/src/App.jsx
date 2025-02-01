@@ -1,6 +1,12 @@
-import Nav from "./nav"
-import Sidebar from "./sidebar"
-function MainPart(){
+import { useState } from "react"
+import Nav from "./components/booksPart"
+import Sidebar from "./components/sidebar"
+function App(){
+
+
+
+
+    
     let condition = localStorage.getItem("sidebar-condition")
     
     return(
@@ -9,8 +15,9 @@ function MainPart(){
         <div id="container">
             <Nav/>
             {condition?(<Sidebar disp={condition}/>):(<p></p>)}
+            
         </div>
     )
 }
 
-export default MainPart
+export default App
