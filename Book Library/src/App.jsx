@@ -1,21 +1,32 @@
-import { useState } from "react"
-import Nav from "./components/booksPart"
+import { useEffect, useState } from "react"
+import Nav from "./components/Body"
 import Sidebar from "./components/sidebar"
-function App(){
-
-
-
-
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Library from "./components/library"
+import { use } from "react"
+function App() {
     
+
+
+    useEffect(() =>{
+        
+    })
+
     let condition = localStorage.getItem("sidebar-condition")
-    
-    return(
+
+    return (
 
 
         <div id="container">
-            <Nav/>
-            {condition?(<Sidebar disp={condition}/>):(<p></p>)}
-            
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Nav opened ={condition}/>} />
+                    <Route path="/library" element = {<Library/>} />
+                </Routes>
+            </BrowserRouter>
+
+            {condition ? (<Sidebar disp={condition} />) : (<p></p>)}
+
         </div>
     )
 }

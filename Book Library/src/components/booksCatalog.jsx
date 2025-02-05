@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react"
 
-function BooksCatalog({ bookData,library }) {
+function BooksCatalog({ books,library }) {
 
-    const [book, setBooks] = bookData
+    const [book, setBooks] = books
     const [lib,setLib] = library
 
 
+    useEffect(() =>{
+        localStorage.setItem("Library",JSON.stringify(lib))
+    },[lib])
 
+
+
+
+    function toLibrary(item){
+        setLib(prev => [...prev,item])
+    }
+    console.log(lib)
 
     return (
 
@@ -19,7 +29,7 @@ function BooksCatalog({ bookData,library }) {
             </div>
 
             <h2>Last searched: </h2>
-            <div id="books">
+            <div  id="books">
                 {
                     book.length > 0 ? (
                         book.map((item,index) => {
@@ -29,7 +39,7 @@ function BooksCatalog({ bookData,library }) {
                                         <img src={item.image} alt="" />
                                         <h3>Title: {item.title}</h3>
                                         <p>{item.subtitle}</p>
-                                        <button>Add To Library</button>
+                                        <button onClick={() => toLibrary(item)}>Add To Library</button>
                                     </div>
                                 </>
                             )

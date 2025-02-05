@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import close from "./navImages/close.png"
+import { Link } from "react-router-dom";
 
-function Sidebar({ disp, closeSidebar }) {
+function Sidebar({ disp, closeSb }) {
     return (
         <div
             id="sidebar"
@@ -10,7 +11,7 @@ function Sidebar({ disp, closeSidebar }) {
             <div id="sidebar-temp">
                 <div id="closeNav">
 
-                    <img id="close" onClick={closeSidebar} src={close} alt="" />
+                    <img id="close" onClick={closeSb} src={close} alt="" />
                 </div>
 
 
@@ -20,7 +21,8 @@ function Sidebar({ disp, closeSidebar }) {
                             <a href="">Books Catalog</a>
                         </li>
                         <li>
-                            <a href="">Favorites</a>
+                           
+                            <Link to="/library">My Library</Link>
                         </li>
                         <li>
                             <a href="">Readed</a>
