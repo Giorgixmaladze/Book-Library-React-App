@@ -72,7 +72,7 @@ function Navigation({book}) {
                     </nav>
                 </div>
             </div>
-            <Sidebar disp={opened} closeSb={closeSidebar} />
+            <Sidebar book={book} disp={opened} closeSb={closeSidebar} />
         </header>
     );
 }

@@ -3,21 +3,16 @@ import { useEffect, useState } from "react";
 import BooksCatalog from "./booksCatalog";
 import Navigation from "./nav";
 
-function Nav() {
-  const [books, setBooks] = useState([]);
-  const [lib, setLib] = useState([]);
+function Nav({lib}) {
+  const [books, setBooks] = useState(JSON.parse(localStorage.getItem("books")) || []);
+  const [library, setLibrary] = lib
 
-  useEffect(() => {
-    const storedBooks = JSON.parse(localStorage.getItem("books"));
-    if (storedBooks) {
-      setBooks(storedBooks);
-    }
-  }, []);
+ 
 
   return (
     <>
       <Navigation book={[books,setBooks]} />
-      <BooksCatalog books={[books,setBooks]} library={[lib,setLib]}/>
+      <BooksCatalog books={[books,setBooks]} library={[library,setLibrary]}/>
     </>
   );
 }

@@ -1,29 +1,32 @@
 import { useEffect, useState } from "react"
 import Nav from "./components/Body"
 import Sidebar from "./components/sidebar"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import Library from "./components/library"
 import { use } from "react"
+import Readed from "./components/Readed"
 function App() {
     
 
 
-    useEffect(() =>{
-        
-    })
+    const [books,setBooks] = useState(JSON.parse(localStorage.getItem("books")))
+    const [readed,setReaded] = useState([])
+
+
 
     let condition = localStorage.getItem("sidebar-condition")
-
+    const [lib, setLib] = useState([]);
     return (
 
 
         <div id="container">
-            <BrowserRouter>
+           
                 <Routes>
-                    <Route path="/" element={<Nav opened ={condition}/>} />
-                    <Route path="/library" element = {<Library/>} />
+                    <Route path="/" element={<Nav opened ={condition} lib={[lib,setLib]}/>} />
+                    <Route path="/library" element = {<Library readed={[readed,setReaded]} book={[books,setBooks]} lib={[lib,setLib]}/>} />
+                    <Route path="/readed" element = {<Readed book={[books,setBooks]} readed={[readed,setReaded]} />} />
                 </Routes>
-            </BrowserRouter>
+          
 
             {condition ? (<Sidebar disp={condition} />) : (<p></p>)}
 

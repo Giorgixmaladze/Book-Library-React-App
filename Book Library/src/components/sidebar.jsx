@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import close from "./navImages/close.png"
 import { Link } from "react-router-dom";
 
-function Sidebar({ disp, closeSb }) {
+function Sidebar({disp, closeSb }) {
     return (
         <div
             id="sidebar"
@@ -18,14 +18,14 @@ function Sidebar({ disp, closeSb }) {
                 <nav id="sideNav">
                     <ul>
                         <li>
-                            <a href="">Books Catalog</a>
+                            <Link to="/">Books Catalog</Link>
                         </li>
                         <li>
                            
                             <Link to="/library">My Library</Link>
                         </li>
                         <li>
-                            <a href="">Readed</a>
+                            <Link to="/readed">Readed</Link>
                         </li>
                     </ul>
                 </nav>
